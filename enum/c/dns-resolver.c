@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Uso: %s endereco\n", argv[0]);
+        fprintf(stderr, "Usage: %s address\n", argv[0]);
         exit(1);
     }
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     hints.ai_socktype = SOCK_STREAM;
 
     if ((status = getaddrinfo(endereco, NULL, &hints, &res)) != 0) {
-        fprintf(stderr, "Erro ao resolver endereco: %s\n", gai_strerror(status));
+        fprintf(stderr, "Error when resolve the address: %s\n", gai_strerror(status));
         exit(2);
     }
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     }
 
     inet_ntop(res->ai_family, addr, ipstr, sizeof(ipstr));
-    printf("Endereco resolvido: %s -> %s\n", endereco, ipstr);
+    printf("Address Resolved: %s -> %s\n", endereco, ipstr);
 
     freeaddrinfo(res);
 
